@@ -1,0 +1,47 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Café expresso tradicional",
+      "imageUrl": "https://i.ibb.co/9n7xmdY/Chocolate-Quente.png",
+      "category": "tradicional",
+      "description": "O tradicional café com água quente e grãos moídos",
+      "price": "8.50",
+      "amount": 0
+    },
+    {
+      "id": 2,
+      "name": "Café com creme",
+      "imageUrl": "https://i.ibb.co/PNLjJcm/Macchiato.png",
+      "category": "tradicional",
+      "description":"O café com creme que todo mundo gosta",
+      "price": "7.99",
+      "amount": 0
+    },{
+      "id": 3,
+      "name": "Café com leite",
+      "imageUrl": "https://i.ibb.co/jLDtDh7/Capuccino.png",
+      "description":"O café com leite mais cremoso e gostos que você verá nesta vida",
+      "category": "tradicional",
+      "price": "10.00",
+      "amount": 0
+    },{
+      "id": 4,
+      "name": "Cappuccino",
+      "imageUrl": "https://i.ibb.co/LQLkcVh/Latte.png",
+      "category": "tradicional",
+      "description":"O café com creme que todo mundo gosta",
+      "price": "5.50",
+      "amount": 0
+    },
+    {
+      "id": 5,
+      "name": "Café extra forte",
+      "imageUrl": "https://i.ibb.co/LQLkcVh/Latte.png",
+      "category": "tradicional",
+      "description":"O café que vai te deixar acordado durante todo o dia",
+      "price": "5.50",
+      "amount": 0
+    }
+  ]
+}
