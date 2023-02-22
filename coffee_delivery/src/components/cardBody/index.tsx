@@ -27,7 +27,6 @@ export interface productsProps {
 export function CardBody() {
   const [products, setProducts] = useState<productsProps[]>()
   const [cart, setCart] = useState<productsProps[]>([])
-  // console.log(cart)
 
   useEffect(() => {
     axios
@@ -36,19 +35,14 @@ export function CardBody() {
   }, [])
 
   function AddItemToCart(itemId: number) {
-    // TODO: Pegar os itens do carringo
     const updatedCart = [...cart]
+    const product = products?.find((product) => product.id === itemId)
 
-    // TODO: verificar se o item existe no carrinho
-    const productExists = updatedCart.find((item) => item.id === itemId)
-
-    const currentAmount = productExists ? productExists.amount : 0
-
-    // TODO: Adicionar o item no estado
-    const item = products?.find((product) => product.id === itemId)
-    if (item) {
-      item.amount += 1
-      setCart([...cart, item])
+    const isIncluded = updatedCart.find((product) => product.id === itemId)
+    if (isIncluded) {
+      isIncluded.amount += 1
+    } else {
+      setCart([...cart, product])
     }
   }
 
