@@ -51,7 +51,6 @@ export function CardBody() {
       setCart([...cart, item])
     }
   }
-  sumSameItem(cart)
 
   return (
     <CardsContainer>
