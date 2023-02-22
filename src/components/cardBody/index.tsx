@@ -38,12 +38,15 @@ export function CardBody() {
     const updatedCart = [...cart]
     const product = products?.find((product) => product.id === itemId)
 
-    const isIncluded = updatedCart.find((product) => product.id === itemId)
-    if (isIncluded) {
-      isIncluded.amount += 1
-    } else {
-      setCart([...cart, product])
+    if (product) {
+      const isIncluded = updatedCart.find((product) => product.id === itemId)
+      if (isIncluded) {
+        isIncluded.amount += 1
+      } else {
+        updatedCart.push({ ...product, amount: 1 })
+      }
     }
+    setCart(updatedCart)
   }
 
   return (
@@ -75,7 +78,7 @@ export function CardBody() {
                     <AmountAndCart>
                       <div>
                         <Minus size={22} />
-                        {product.amount}
+                        {cart.find((p) => p.id === product.id)?.amount ?? 0}
                         <Plus
                           size={22}
                           onClick={() => AddItemToCart(product.id)}
