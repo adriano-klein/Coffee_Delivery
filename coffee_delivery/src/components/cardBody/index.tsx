@@ -49,6 +49,21 @@ export function CardBody() {
     setCart(updatedCart)
   }
 
+  function RemoveItemToCart(itemId: number) {
+    const updatedCart = [...cart]
+    const product = products?.find((product) => product.id === itemId)
+
+    if (product) {
+      const isIncluded = updatedCart.find((product) => product.id === itemId)
+      if (isIncluded) {
+        isIncluded.amount -= 1
+      } else {
+        updatedCart.push({ ...product, amount: 1 })
+      }
+    }
+    setCart(updatedCart)
+  }
+
   return (
     <CardsContainer>
       <h1>Nossos cafés</h1>
@@ -77,7 +92,10 @@ export function CardBody() {
                     </Price>
                     <AmountAndCart>
                       <div>
-                        <Minus size={22} />
+                        <Minus
+                          size={22}
+                          onClick={() => RemoveItemToCart(product.id)}
+                        />
                         {cart.find((p) => p.id === product.id)?.amount ?? 0}
                         <Plus
                           size={22}
