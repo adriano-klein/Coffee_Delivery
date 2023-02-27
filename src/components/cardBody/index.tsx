@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useContext } from 'react'
 import {
   AmountAndCart,
   CardContainer,
@@ -11,8 +11,8 @@ import {
   DescriptionContainer,
   Price,
 } from './styles'
-import axios from 'axios'
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
+import { CartContext } from '../../contexts/cartContext'
 
 export interface productsProps {
   id: number
@@ -25,29 +25,44 @@ export interface productsProps {
 }
 
 export function CardBody() {
-  const [products, setProducts] = useState<productsProps[]>()
-  const [cart, setCart] = useState<productsProps[]>([])
+  const { products } = useContext(CartContext)
+  console.log(products)
+  // const [products, setProducts] = useState<productsProps[]>()
+  // const [cart, setCart] = useState<productsProps[]>([])
 
-  useEffect(() => {
-    axios
-      .get('http://localhost:3000/products')
-      .then((response) => setProducts(response.data))
-  }, [])
+  // useEffect(() => {
+  //   axios
+  //     .get('http://localhost:3000/products')
+  //     .then((response) => setProducts(response.data))
+  // }, [])
 
-  function AddItemToCart(itemId: number) {
-    const updatedCart = [...cart]
-    const product = products?.find((product) => product.id === itemId)
+  // function AddItemToCart(itemId: number) {
+  //   const updatedCart = [...cart]
+  //   const product = products?.find((product) => product.id === itemId)
 
-    if (product) {
-      const isIncluded = updatedCart.find((product) => product.id === itemId)
-      if (isIncluded) {
-        isIncluded.amount += 1
-      } else {
-        updatedCart.push({ ...product, amount: 1 })
-      }
-    }
-    setCart(updatedCart)
-  }
+  //   if (product) {
+  //     const isIncluded = updatedCart.find((product) => product.id === itemId)
+  //     if (isIncluded) {
+  //       isIncluded.amount += 1
+  //     } else {
+  //       updatedCart.push({ ...product, amount: 1 })
+  //     }
+  //   }
+  //   setCart(updatedCart)
+  // }
+
+  // function RemoveItemToCart(itemId: number) {
+  //   const updatedCart = [...cart]
+  //   const product = products?.find((product) => product.id === itemId)
+
+  //   if (product) {
+  //     const isIncluded = updatedCart.find((product) => product.id === itemId)
+  //     if (isIncluded && isIncluded.amount > 0) {
+  //       isIncluded.amount -= 1
+  //     }
+  //   }
+  //   setCart(updatedCart)
+  // }
 
   return (
     <CardsContainer>
@@ -77,7 +92,10 @@ export function CardBody() {
                     </Price>
                     <AmountAndCart>
                       <div>
-                        <Minus size={22} />
+                        <Minus
+                          size={22}
+                          onClick={() => RemoveItemToCart(product.id)}
+                        />
                         {cart.find((p) => p.id === product.id)?.amount ?? 0}
                         <Plus
                           size={22}

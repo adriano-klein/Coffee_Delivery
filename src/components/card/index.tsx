@@ -9,8 +9,6 @@ import {
   Price,
 } from './styles'
 import { Plus, Minus, ShoppingCart } from 'phosphor-react'
-import { useEffect } from 'react'
-import axios from 'axios'
 
 interface productsProps {
   products?: {

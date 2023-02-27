@@ -1,6 +1,6 @@
 import { BannerContainer, Bullets, MainText } from './styles'
 import CoffeeBanner from '../../assets/CoffeeBanner.png'
-import { ShoppingCart, Timer, Package, Coffee } from 'phosphor-react'
+import { ShoppingCart, Timer, Package, Coffee, Backpack } from 'phosphor-react'
 
 export function Banner() {
   return (
